@@ -147,7 +147,7 @@ const INITIAL_ITEMS: LostFoundItem[] = [
   {
     id: "LF-107",
     title: "Navy Fjällräven Kånken Backpack",
-    type: "reunited",
+    type: "found",
     category: "bags",
     description:
       "Contained architecture textbooks and draft sketchbooks. Successfully returned to owner through campus security lockbox!",
@@ -528,11 +528,10 @@ export default function LostAndFoundHub() {
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all border ${
-                selectedType === "lost"
+              className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all border ${selectedType === "lost"
                   ? "bg-rose-600 text-white border-rose-500 shadow-lg shadow-rose-600/30 ring-2 ring-rose-400"
                   : "bg-white/10 text-slate-100 hover:bg-white/15 border-white/20"
-              }`}
+                }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
               Browse Lost Items ({stats.totalLost})
@@ -544,11 +543,10 @@ export default function LostAndFoundHub() {
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all border ${
-                selectedType === "found"
+              className={`flex items-center gap-2.5 px-5 py-3 rounded-xl font-semibold text-sm transition-all border ${selectedType === "found"
                   ? "bg-emerald-600 text-white border-emerald-500 shadow-lg shadow-emerald-600/30 ring-2 ring-emerald-400"
                   : "bg-white/10 text-slate-100 hover:bg-white/15 border-white/20"
-              }`}
+                }`}
             >
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
               Browse Found Items ({stats.totalFound})
@@ -560,11 +558,10 @@ export default function LostAndFoundHub() {
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium text-sm transition-all border ${
-                selectedType === "reunited"
+              className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium text-sm transition-all border ${selectedType === "reunited"
                   ? "bg-indigo-600 text-white border-indigo-500"
                   : "bg-white/5 text-slate-300 hover:bg-white/10 border-white/10"
-              }`}
+                }`}
             >
               <IconCheck className="w-4 h-4 text-indigo-400" />
               Reunited Hall ({stats.totalReunited})
@@ -622,43 +619,39 @@ export default function LostAndFoundHub() {
             <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100/90 rounded-xl">
               <button
                 onClick={() => setSelectedType("all")}
-                className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                  selectedType === "all"
+                className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${selectedType === "all"
                     ? "bg-white text-slate-900 shadow-sm"
                     : "text-slate-600 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 All Feed ({items.length})
               </button>
               <button
                 onClick={() => setSelectedType("lost")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                  selectedType === "lost"
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${selectedType === "lost"
                     ? "bg-rose-500 text-white shadow-sm shadow-rose-500/20"
                     : "text-slate-600 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 <span className="w-2 h-2 rounded-full bg-rose-200"></span>
                 Lost ({items.filter((i) => i.type === "lost" && i.status !== "reunited").length})
               </button>
               <button
                 onClick={() => setSelectedType("found")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                  selectedType === "found"
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${selectedType === "found"
                     ? "bg-emerald-600 text-white shadow-sm shadow-emerald-600/20"
                     : "text-slate-600 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-200"></span>
                 Found ({items.filter((i) => i.type === "found" && i.status !== "reunited").length})
               </button>
               <button
                 onClick={() => setSelectedType("reunited")}
-                className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                  selectedType === "reunited"
+                className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${selectedType === "reunited"
                     ? "bg-indigo-600 text-white shadow-sm shadow-indigo-600/20"
                     : "text-slate-600 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 Reunited ({items.filter((i) => i.status === "reunited").length})
               </button>
@@ -680,22 +673,20 @@ export default function LostAndFoundHub() {
                 <button
                   onClick={() => setViewMode("grid")}
                   aria-label="Grid view"
-                  className={`p-1.5 rounded-md ${
-                    viewMode === "grid"
+                  className={`p-1.5 rounded-md ${viewMode === "grid"
                       ? "bg-white text-indigo-600 shadow-sm"
                       : "text-slate-400 hover:text-slate-700"
-                  }`}
+                    }`}
                 >
                   <IconGrid className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
                   aria-label="List view"
-                  className={`p-1.5 rounded-md ${
-                    viewMode === "list"
+                  className={`p-1.5 rounded-md ${viewMode === "list"
                       ? "bg-white text-indigo-600 shadow-sm"
                       : "text-slate-400 hover:text-slate-700"
-                  }`}
+                    }`}
                 >
                   <IconList className="w-4 h-4" />
                 </button>
@@ -725,11 +716,10 @@ export default function LostAndFoundHub() {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    selectedCategory === cat.id
+                  className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${selectedCategory === cat.id
                       ? "bg-slate-900 text-white shadow-sm"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200/70"
-                  }`}
+                    }`}
                 >
                   {cat.label}
                 </button>
@@ -847,11 +837,10 @@ export default function LostAndFoundHub() {
                         e.stopPropagation();
                         toggleSave(item.id);
                       }}
-                      className={`absolute bottom-2 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                        isSaved
+                      className={`absolute bottom-2 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all ${isSaved
                           ? "bg-rose-50 text-rose-600"
                           : "bg-white/80 backdrop-blur-sm text-slate-700 hover:bg-white"
-                      }`}
+                        }`}
                       aria-label="Save item"
                     >
                       <IconHeart className="w-4 h-4" filled={isSaved} />
@@ -918,13 +907,12 @@ export default function LostAndFoundHub() {
                             setSelectedItemForDetail(item);
                             setIsClaimModalOpen(true);
                           }}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                            isReunited
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${isReunited
                               ? "bg-slate-100 text-slate-400 cursor-not-allowed"
                               : isLost
-                              ? "bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200"
-                              : "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200"
-                          }`}
+                                ? "bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200"
+                                : "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200"
+                            }`}
                           disabled={isReunited}
                         >
                           {isReunited ? "Closed" : isLost ? "I Found This" : "Claim Item"}
@@ -960,13 +948,12 @@ export default function LostAndFoundHub() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span
-                          className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
-                            isReunited
+                          className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${isReunited
                               ? "bg-violet-100 text-violet-800"
                               : isLost
-                              ? "bg-rose-100 text-rose-800"
-                              : "bg-emerald-100 text-emerald-800"
-                          }`}
+                                ? "bg-rose-100 text-rose-800"
+                                : "bg-emerald-100 text-emerald-800"
+                            }`}
                         >
                           {item.status.toUpperCase()}
                         </span>
@@ -996,9 +983,8 @@ export default function LostAndFoundHub() {
                   >
                     <button
                       onClick={() => toggleSave(item.id)}
-                      className={`p-2 rounded-lg ${
-                        isSaved ? "text-rose-600 bg-rose-50" : "text-slate-400 hover:bg-slate-100"
-                      }`}
+                      className={`p-2 rounded-lg ${isSaved ? "text-rose-600 bg-rose-50" : "text-slate-400 hover:bg-slate-100"
+                        }`}
                     >
                       <IconHeart className="w-4 h-4" filled={isSaved} />
                     </button>
@@ -1008,13 +994,12 @@ export default function LostAndFoundHub() {
                         setSelectedItemForDetail(item);
                         setIsClaimModalOpen(true);
                       }}
-                      className={`px-4 py-2 rounded-lg text-xs font-semibold ${
-                        isReunited
+                      className={`px-4 py-2 rounded-lg text-xs font-semibold ${isReunited
                           ? "bg-slate-100 text-slate-400"
                           : isLost
-                          ? "bg-rose-600 text-white hover:bg-rose-700"
-                          : "bg-emerald-600 text-white hover:bg-emerald-700"
-                      }`}
+                            ? "bg-rose-600 text-white hover:bg-rose-700"
+                            : "bg-emerald-600 text-white hover:bg-emerald-700"
+                        }`}
                     >
                       {isReunited ? "Reunited" : isLost ? "I Found This" : "Claim"}
                     </button>
@@ -1127,9 +1112,8 @@ export default function LostAndFoundHub() {
 
             <div className="flex items-center gap-3 mb-6">
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center text-white ${
-                  formData.type === "lost" ? "bg-rose-500" : "bg-emerald-600"
-                }`}
+                className={`w-10 h-10 rounded-xl flex items-center justify-center text-white ${formData.type === "lost" ? "bg-rose-500" : "bg-emerald-600"
+                  }`}
               >
                 <IconPlus className="w-5 h-5" />
               </div>
@@ -1149,22 +1133,20 @@ export default function LostAndFoundHub() {
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, type: "lost" }))}
-                  className={`py-2 text-xs font-bold rounded-lg transition-all ${
-                    formData.type === "lost"
+                  className={`py-2 text-xs font-bold rounded-lg transition-all ${formData.type === "lost"
                       ? "bg-rose-500 text-white shadow-sm"
                       : "text-slate-600 hover:text-slate-900"
-                  }`}
+                    }`}
                 >
                   🔴 I Lost Something
                 </button>
                 <button
                   type="button"
                   onClick={() => setFormData((p) => ({ ...p, type: "found" }))}
-                  className={`py-2 text-xs font-bold rounded-lg transition-all ${
-                    formData.type === "found"
+                  className={`py-2 text-xs font-bold rounded-lg transition-all ${formData.type === "found"
                       ? "bg-emerald-600 text-white shadow-sm"
                       : "text-slate-600 hover:text-slate-900"
-                  }`}
+                    }`}
                 >
                   🟢 I Found Something
                 </button>
@@ -1340,11 +1322,10 @@ export default function LostAndFoundHub() {
                 </button>
                 <button
                   type="submit"
-                  className={`px-5 py-2.5 text-xs font-bold rounded-xl text-white shadow-md transition-all ${
-                    formData.type === "lost"
+                  className={`px-5 py-2.5 text-xs font-bold rounded-xl text-white shadow-md transition-all ${formData.type === "lost"
                       ? "bg-rose-600 hover:bg-rose-700 shadow-rose-600/20"
                       : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20"
-                  }`}
+                    }`}
                 >
                   Publish {formData.type.toUpperCase()} Report
                 </button>
@@ -1380,13 +1361,12 @@ export default function LostAndFoundHub() {
               <div className="absolute bottom-4 left-6 right-6 text-white">
                 <div className="flex items-center gap-2 mb-1.5">
                   <span
-                    className={`text-xs uppercase font-extrabold px-2.5 py-0.5 rounded-full ${
-                      selectedItemForDetail.status === "reunited"
+                    className={`text-xs uppercase font-extrabold px-2.5 py-0.5 rounded-full ${selectedItemForDetail.status === "reunited"
                         ? "bg-violet-500 text-white"
                         : selectedItemForDetail.type === "lost"
-                        ? "bg-rose-600 text-white"
-                        : "bg-emerald-600 text-white"
-                    }`}
+                          ? "bg-rose-600 text-white"
+                          : "bg-emerald-600 text-white"
+                      }`}
                   >
                     {selectedItemForDetail.status.toUpperCase()}
                   </span>
@@ -1482,19 +1462,18 @@ export default function LostAndFoundHub() {
                       setIsClaimModalOpen(true);
                     }}
                     disabled={selectedItemForDetail.status === "reunited"}
-                    className={`w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-md transition-all ${
-                      selectedItemForDetail.status === "reunited"
+                    className={`w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-md transition-all ${selectedItemForDetail.status === "reunited"
                         ? "bg-slate-300 cursor-not-allowed"
                         : selectedItemForDetail.type === "lost"
-                        ? "bg-rose-600 hover:bg-rose-700 shadow-rose-600/20"
-                        : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20"
-                    }`}
+                          ? "bg-rose-600 hover:bg-rose-700 shadow-rose-600/20"
+                          : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20"
+                      }`}
                   >
                     {selectedItemForDetail.status === "reunited"
                       ? "Case Closed"
                       : selectedItemForDetail.type === "lost"
-                      ? "I Found This Item"
-                      : "Verify & Claim This Item"}
+                        ? "I Found This Item"
+                        : "Verify & Claim This Item"}
                   </button>
                 </div>
               </div>
